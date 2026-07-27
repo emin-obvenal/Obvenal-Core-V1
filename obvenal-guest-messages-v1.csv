@@ -1,0 +1,16 @@
+customer_name,nationality_language,message_text,expected_category,scenario_description
+Carlos M.,Spanish,¿A qué hora es el check-out en Villa Sol de Mallorca?,General Info,"Specific, standard general info question containing the villa name."
+Giulia B.,Italian,non funziona niente,Technical Issue,Highly ambiguous ('nothing works'). Tests if the LLM asks for details or routes to the technical failure flow.
+Jean-Paul,French,"Au feu ! La cuisine de la Casa Rosa est en feu, appelez les pompiers !",Emergency,Clear emergency (fire) containing the property name.
+Klaus W.,German,Wo?,General Info,Extremely short message meaning 'Where?'. Tests missing context management.
+Emily R.,English,The AC in the master bedroom of Villa Toscana is leaking water heavily onto the floor.,Technical Issue,Detailed technical complaint including the property name.
+Unknown,Spanish,🆘🆘🚑🩸,Emergency,Medical emergency notification consisting solely of emojis.
+Lorenzo F.,Italian,Possiamo avere degli asciugamani extra a Villa Serena?,General Info,Standard housekeeping/information request.
+Sophie L.,French,Le portail électrique de la Finca Sol ne s'ouvre plus. Nous sommes bloqués dehors.,Technical Issue,Electric gate failure. High priority but functionally a technical issue.
+Hans M.,German,Hilfe!!!,Emergency,Undetailed emergency using only the word 'Help!!!'.
+John D.,English,❓🗝️,General Info,Only a question mark and a key emoji. Tests intent for check-in/key information.
+Maria G.,Spanish,Internet malo.,Technical Issue,"Very short, poor grammar notification of a technical issue."
+Marco A.,Italian,Qualcuno sta cercando di forzare la porta sul retro di Villa Bella! Aiuto!,Emergency,"Security breach (attempted break-in), property name specified."
+Camille D.,French,Piscine ?,General Info,One-word question. High ambiguity operational query.
+Lukas S.,German,🥶🌡️ ❄️,Technical Issue,Expressing heating/AC problems via emojis.
+Sarah W.,English,"There is a massive gas smell in the kitchen of Chalet Blanc, I feel dizzy.",Emergency,Life-threatening situation involving a gas leak and health issue.
