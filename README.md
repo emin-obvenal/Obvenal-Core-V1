@@ -1,4 +1,4 @@
-# Obvenal AI Agency | Enterprise Guest Support PoC
+# Obvenal AI Agency | Production-Ready PoC
 
 ![Obvenal AI Architecture](https://img.shields.io/badge/Architecture-n8n-FF6C37?style=for-the-badge&logo=n8n)
 ![LLM Engine](https://img.shields.io/badge/AI_Engine-Gemini_1.5_Pro-4285F4?style=for-the-badge&logo=google)
