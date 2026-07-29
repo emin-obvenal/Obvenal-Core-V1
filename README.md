@@ -17,14 +17,30 @@ The workflow is built on a robust, asynchronous event-driven architecture to ens
 3. **Contextual Generation:** Distinct LLM branches process the categorized request using highly restrictive System Prompts to ensure tone consistency, precise name extraction, and localized language matching.
 4. **Audit Logging:** Every interaction is automatically logged into a centralized dashboard for Quality Assurance (QA) and performance tracking.
 
-   ### 🚨 V2 Update: Automated Triage & Dynamic SLA Management
+  ### 🚨 V2 Architecture: Autonomous Technical Dispatch & Dynamic SLA Center
 
-      The system has been upgraded from a standard classification routing to a fully autonomous **Technical Dispatch & Triage Center**. When a `Technical Issue` is detected, the workflow now triggers a secondary AI-driven evaluation process:
+In the V2 iteration, the Obvenal AI core transitions from a simple intent classifier into a fully autonomous operational dispatch center. The system now not only understands the guest's issue but actively calculates risk, delegates tasks to specific departments, and enforces strict Service Level Agreements (SLAs).
 
-    *   **Granular Categorization:** Issues are strictly parsed into operational departments (`hvac`, `plumbing`, `electrical`, `pool`, `general_maintenance`) strictly outputted in pure JSON to eliminate data-parsing errors.
-    *   **Priority Triage (P1-P3 Matrix):** The AI autonomously evaluates the urgency of the issue without human intervention. Critical threats (e.g., power outages, massive leaks) are flagged as `p1` (Urgent), while routine inconveniences are assigned `p2` or `p3`.
-    *   **Dynamic SLA Calculation:** An integrated code logic calculates targeted response deadlines based on the assigned priority (e.g., assigning a strict "30 minutes" deadline for `p1` issues).
-    *   **Visual Dispatch Dashboard:** Data is perfectly serialized and pushed to a Google Sheets dashboard where conditional formatting provides real-time, color-coded visual alerts (Red for P1) for the technical ground team.
+#### ⚙️ Enhanced Routing & Granular Triage
+*   **Deterministic JSON Parsing:** The AI's generative output is strictly constrained to a predefined JSON schema. This eliminates unstructured text parsing errors and ensures 100% data compatibility with downstream API nodes.
+*   **Departmental Allocation:** Incoming technical issues are dynamically routed to specific operational branches (`hvac`, `plumbing`, `electrical`, `pool`, `general_maintenance`) based on contextual analysis.
+*   **Automated Priority Matrix (P1-P3):** The model autonomously evaluates the severity and safety risk of each request, assigning a priority tag without human intervention:
+    *   **P1 (Critical):** Immediate health/safety risks or severe property damage.
+    *   **P2 (Standard):** Routine inconveniences requiring prompt but non-emergency action.
+    *   **P3 (Low):** Cosmetic or minor maintenance issues.
+
+#### ⏱️ Dynamic SLA (Service Level Agreement) Computation
+To guarantee enterprise-grade operational efficiency, the workflow introduces an automated SLA calculator. Based on the assigned priority, the system injects a strict resolution deadline into the dispatch logic:
+*   **P1 Protocols:** Triggers a mandatory 30-minute response deadline for ground teams.
+*   **P2 & P3 Protocols:** Scales the expected response window dynamically from 2 to 24 hours based on operational load.
+
+#### 🛡️ Error Reporting & Fallback Mechanisms (The Safety Net)
+To maintain a zero-fail operational environment in luxury hospitality, V2 integrates a robust error-handling architecture:
+*   **Schema Validation & Dead Letter Queue:** If the LLM hallucinates, outputs an invalid JSON format, or fails to categorize the issue confidently, the system immediately halts the automated dispatch.
+*   **Automated Error Reporting:** Failed executions bypass the standard workflow and are automatically pushed to a designated "Human Review / Error Log" channel. This guarantees that no guest request is ever lost due to an API timeout or parsing error.
+
+#### 📊 Visual Dispatch Command Center
+The processed data is serialized and pushed to a Google Sheets-based UI. Leveraging advanced conditional formatting, the dashboard provides real-time, color-coded visual alerts (e.g., High-contrast Red for P1 emergencies) to give technical teams instant situational awareness.
 
 ## 📊 Performance Metrics (Simulated Q3 Cohort)
 A rigorous stress test of 15 edge-case scenarios was conducted. The results demonstrate flawless execution:
