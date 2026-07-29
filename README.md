@@ -19,7 +19,7 @@ The workflow is built on a robust, asynchronous event-driven architecture to ens
 
    ### 🚨 V2 Update: Automated Triage & Dynamic SLA Management
 
-   The system has been upgraded from a standard classification routing to a fully autonomous **Technical Dispatch & Triage Center**. When a `Technical Issue` is detected, the workflow now triggers a secondary AI-driven evaluation process:
+    The system has been upgraded from a standard classification routing to a fully autonomous **Technical Dispatch & Triage Center**. When a `Technical Issue` is detected, the workflow now triggers a secondary AI-driven evaluation process:
 
     *   **Granular Categorization:** Issues are strictly parsed into operational departments (`hvac`, `plumbing`, `electrical`, `pool`, `general_maintenance`) strictly outputted in pure JSON to eliminate data-parsing errors.
     *   **Priority Triage (P1-P3 Matrix):** The AI autonomously evaluates the urgency of the issue without human intervention. Critical threats (e.g., power outages, massive leaks) are flagged as `p1` (Urgent), while routine inconveniences are assigned `p2` or `p3`.
