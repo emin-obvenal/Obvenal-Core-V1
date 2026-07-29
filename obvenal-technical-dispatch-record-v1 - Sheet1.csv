@@ -1,0 +1,16 @@
+timestamp,guest_name,villa,issue,urgency,category,response_deadline,status
+2026-07-28T14:30:00.000Z,Alexander Pierce,Villa Aurora,"The infinity pool water is freezing and the digital thermostat on the patio is completely blank. We have a sunset party in 3 hours, this needs to be fixed immediately.",p2,pool,2 hours,OPEN
+2026-07-28T15:15:22.000Z,Sophia Loren,Chalet Blanc,"Our private chef is trying to use the double induction ovens for dinner prep, but turning them on keeps tripping the main breaker. Now the kitchen and the dining room are completely in the dark.",p1,electrical,30 minutes,OPEN
+2026-07-28T16:05:10.000Z,Marcus Chen,Penthouse Azure,"The smart ventilation system in the master suite is making a loud rattling noise, and it's blowing lukewarm air instead of cooling the room. We cannot sleep with this noise.",p1,hvac,30 minutes,OPEN
+2026-07-28T16:40:05.000Z,Eleanor Vance,Villa Sol,We had an accident in the main lounge. A full bottle of red wine shattered on the white Persian rug. There is glass everywhere and the stain is spreading. Please send someone right away before it ruins the fabric.,p1,general_maintenance,30 minutes,OPEN
+2026-07-28T17:10:45.000Z,John Doe,Villa Toscana,"Hello, something is malfunctioning in the basement entertainment room. Can a technician come over as soon as possible?",p2,general_maintenance,2 hours,OPEN
+2026-07-28T17:25:30.000Z,Mia Wong,Villa Luna,🥶 ❄️ 🧊 master bedroom...,p1,hvac,30 minutes,OPEN
+2026-07-28T18:00:12.000Z,Bruce Wayne,Villa Serena,"The jacuzzi water looks very cloudy and there is a strange gurgling sound coming from the skimmer. Also, I think the underwater lights are shorting out because they keep flickering.",p1,pool,30 minutes,OPEN
+2026-07-28T18:45:50.000Z,Jane Smith,Penthouse Azure,It stopped working.,p2,general_maintenance,2 hours,OPEN
+2026-07-28T19:10:05.000Z,Clark Kent,Villa Aurora,"The power went out in the west wing of the house, and now the electric garage door won't open. Our rental car is stuck inside and we have a dinner reservation.",p1,electrical,30 minutes,OPEN
+2026-07-28T19:35:40.000Z,Oliver Twist,Chalet Blanc,"The previous guests must have had a dog. There is pet hair all over the velvet sofa in the cinema room. We need a deep clean immediately, my wife is allergic.",p1,general_maintenance,30 minutes,OPEN
+2026-07-28T20:05:15.000Z,Emma Watson,Villa Luna,It's freezing in the living room. The underfloor heating doesn't seem to be activating even though the wall panel says it's on.,p1,hvac,30 minutes,OPEN
+2026-07-28T20:22:10.000Z,Carlos Sainz,Villa Sol,"Someone dropped a glass tray by the pool. There is shattered glass everywhere on the wet deck, and some of it got into the jacuzzi filter. It's too dangerous to walk barefoot.",p1,pool,30 minutes,OPEN
+2026-07-28T20:50:33.000Z,Liam Neeson,Villa Serena,The waterfall feature in the main pool is stuck on the highest setting and water is starting to flood the wooden deck. We can't find the valve to turn it off.,p1,pool,30 minutes,OPEN
+2026-07-28T21:15:00.000Z,Isabella Rossi,Villa Toscana,🔌⚡ dark.,p1,electrical,30 minutes,OPEN
+2026-07-28T21:40:45.000Z,James Holden,Penthouse Azure,Can you send someone from management? The electronic safe in the master closet won't accept my PIN and my passport is locked inside. We have a flight tomorrow morning.,p1,general_maintenance,30 minutes,OPEN

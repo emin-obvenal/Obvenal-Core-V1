@@ -1,0 +1,583 @@
+{
+  "name": "Obvenal Technical Dispatch V1",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -16,
+        0
+      ],
+      "id": "f1097610-5c20-4472-9537-f7aa5174d698",
+      "name": "TriggerManually"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.5-flash-lite",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        1040,
+        240
+      ],
+      "id": "98701ffa-e81d-497a-bab4-17a6e7f47492",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "mMBJ1eFwcVCfsZIj",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "WCnd8qLJMPcYtyHy",
+          "mode": "list",
+          "cachedResultName": "obvenal-technical-dispatch V1",
+          "cachedResultUrl": "/projects/KVBjpQpyrkFle4dE/datatables/WCnd8qLJMPcYtyHy"
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        176,
+        0
+      ],
+      "id": "6cf4e8ce-fd99-426a-b6e3-1aec33fab2f2",
+      "name": "MockTechnicalProblems"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        384,
+        0
+      ],
+      "id": "738d3a82-932a-447b-989e-1c860c0a75ce",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        576,
+        208
+      ],
+      "id": "37328754-7c7a-4bc4-b649-5ef3e152243b",
+      "name": "Wait",
+      "webhookId": "48975a37-edde-4662-a5ef-2202dd455b7e"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        528,
+        -160
+      ],
+      "id": "41e5562a-f76d-45d7-b7ae-3c3d2f82bdf8",
+      "name": "NoOperation"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "=$json.text.toLowerCase().trim() }} ",
+                    "rightValue": "hvac",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "cb82bf9e-c7ad-4141-bfae-a5e7b69c8191"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "hvac"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "74bf20bd-bd56-4303-91a8-990b04b264b4",
+                    "leftValue": "$json.text.toLowerCase().trim() }} ",
+                    "rightValue": "pool",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "pool"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "8d9a95b9-5c45-42dd-95d2-5d81395aba31",
+                    "leftValue": "$json.text.toLowerCase().trim() }} ",
+                    "rightValue": "electrical",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "electrical"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "2a86d2b3-0e8e-40b0-8584-ef2eda09461b",
+                    "leftValue": "$json.text.toLowerCase().trim() }} ",
+                    "rightValue": "plumbing",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "plumbing"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "74c3629f-98fa-4330-9ee8-7356b95dd551",
+                    "leftValue": "$json.text.toLowerCase().trim() }} ",
+                    "rightValue": "it",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "general_maintance"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": 4
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        1056,
+        -112
+      ],
+      "id": "0bd21910-75cd-41ae-bd6d-aa9f66a49556",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Issue: {{ $json.issue_description }}\nVilla: {{ $json.villa_name }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "[Role]\nYou are an highly accurate categorization assistant for a property maintenance management system.\n\n[Context]\nThe system automatically receives maintenance requests from users. To ensure these requests are routed to the correct department within our automation workflow (e.g., n8n, Make), every incoming issue must be classified into specific, pre-determined operational categories without human intervention.\n\n[Task]\nAnalyze the provided maintenance issue description and classify it into exactly ONE of the following five predefined categories:\n1. \"hvac\" (heating, ventilation, and air conditioning issues)\n2. \"pool\" (swimming pool or spa related issues)\n3. \"electrical\" (power outages, wiring, outlets, or lighting issues)\n4. \"plumbing\" (leaks, pipe issues, toilets, or water supply problems)\n5. \"general_maintenance\" (any other structural, cosmetic, or unidentified issues)\n\nStrict Output Rule: You must output ONLY a valid JSON object containing the selected category. Do not include any conversational text, explanations, or markdown formatting (like ```json).\n\n[Target Audience]\nThe output will be read and processed directly by an automated backend machine, not a human. Absolute adherence to the JSON format is mandatory to prevent system crashes.\n\n[Input Format]\nYou will receive the issue in the following format:\nIssue description: {{ $json.issue_description }}"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        720,
+        -64
+      ],
+      "id": "2765c396-0f5a-4204-a9fb-8240e725f5a0",
+      "name": "ClassificationLLM"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=USER: {{ $('MockTechnicalProblems').item.json.issue_description }}\n",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "  [Role] You are a highly accurate triage and prioritization assistant for a property maintenance management system.  [Context] The system automatically receives maintenance requests from guests or tenants. To ensure our technical teams address the most critical problems first, every incoming issue must be evaluated for urgency and assigned a priority level (p1, p2, or p3) strictly without human intervention.  [Task] Analyze the provided maintenance issue description and classify its urgency into exactly ONE of the following three priority levels:  1. \"p1\" (High/Urgent): Immediate threat to health, safety, severe property damage, or major habitability issues (e.g., massive water leaks, total power outage, complete HVAC failure, security risks). 2. \"p2\" (Medium/Standard): Inconvenient issues that require attention soon but do not pose an immediate danger or severe damage risk (e.g., a slow draining sink, a single broken electrical outlet, pool heating issues, minor appliance malfunction). 3. \"p3\" (Low/Routine): Minor cosmetic issues, routine maintenance, or small annoyances that do not significantly impact the guest's daily living (e.g., loose cabinet hinges, minor paint scratches, superficial wear and tear).  Strict Output Rule: You must output ONLY a valid JSON object containing the selected priority. Do not include any conversational text, explanations, or markdown formatting (like ```json).  [Target Audience] The output will be read and processed directly by an automated backend machine, not a human. Absolute adherence to the JSON format is mandatory to prevent system crashes.  [Input Format] You will receive the issue in the following format: Issue description: \"{{Issue_Description}}\""
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        1296,
+        -64
+      ],
+      "id": "5d601d6f-47bd-425c-8ae4-acf0cfdf26ce",
+      "name": "PriorityScoring"
+    },
+    {
+      "parameters": {
+        "jsCode": "// AI'dan gelen önceliği alıyoruz (küçük/büyük harf sorununu önlemek için toLowerCase ekledik)\nconst priority = String($json.priority || $json.text || \"\").toLowerCase(); \n\n// Görseldeki mantıkla (Ternary Operator) süreyi belirliyoruz\nconst deadline = priority.includes('p1') ? '30 minutes' : \n                 priority.includes('p2') ? '2 hours' : \n                 '24 hours';\n\n// Tüm mevcut verileri tutarak, hesapladığımız \"deadline\" verisini de pakete ekleyip Sheets'e yolluyoruz\nreturn { \n  json: { \n    ...$input.item.json, \n    deadline: deadline \n  } \n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1648,
+        -64
+      ],
+      "id": "ede51372-af38-46ac-9c6e-6c3dc44ac549",
+      "name": "DeadlineCalculator"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1GCC_jN4wsctLFgMmh2QTb2ZktmyfEqSVUrrm9Ziohpg",
+          "mode": "list",
+          "cachedResultName": "Obvenal Technical Dispatch Record V1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1GCC_jN4wsctLFgMmh2QTb2ZktmyfEqSVUrrm9Ziohpg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1GCC_jN4wsctLFgMmh2QTb2ZktmyfEqSVUrrm9Ziohpg/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "timestamp": "={{ $('MockTechnicalProblems').item.json.timestamp }}",
+            "guest_name": "={{ $('MockTechnicalProblems').item.json.guest_name }}",
+            "villa": "={{ $('MockTechnicalProblems').item.json.villa_name }}",
+            "issue": "={{ $('MockTechnicalProblems').item.json.issue_description }}",
+            "urgency": "={{ JSON.parse($('PriorityScoring').item.json.text).priority }}",
+            "category": "={{ JSON.parse($('ClassificationLLM').item.json.text).category }}",
+            "status": "OPEN",
+            "response_deadline": "={{ $json.deadline }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "timestamp",
+              "displayName": "timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "guest_name",
+              "displayName": "guest_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "villa",
+              "displayName": "villa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "issue",
+              "displayName": "issue",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "urgency",
+              "displayName": "urgency",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "category",
+              "displayName": "category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "response_deadline",
+              "displayName": "response_deadline",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1856,
+        -64
+      ],
+      "id": "9de882bd-330d-4720-9772-93ff8be1953f",
+      "name": "SheetRaport",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "uRIyeoPleBl5Qty1",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "TriggerManually": {
+      "main": [
+        [
+          {
+            "node": "MockTechnicalProblems",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "ClassificationLLM",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "PriorityScoring",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MockTechnicalProblems": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "NoOperation",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "ClassificationLLM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "PriorityScoring",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "PriorityScoring",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "PriorityScoring",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "PriorityScoring",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "PriorityScoring",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ClassificationLLM": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PriorityScoring": {
+      "main": [
+        [
+          {
+            "node": "DeadlineCalculator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeadlineCalculator": {
+      "main": [
+        [
+          {
+            "node": "SheetRaport",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "cadc4957-ab05-4f73-88e5-d82939595344",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "89621bd9dc21eceb1fdecb7176d0f29006f1faa74998e5f784e31bfeb6e3ea58"
+  },
+  "nodeGroups": [],
+  "id": "FAEtuGQcwUzk6Zmv",
+  "tags": [
+    {
+      "updatedAt": "2026-07-26T13:21:20.475Z",
+      "createdAt": "2026-07-26T13:21:20.475Z",
+      "id": "wRyfWZ5Cu8E8UsyV",
+      "name": "obvenal"
+    }
+  ]
+}
