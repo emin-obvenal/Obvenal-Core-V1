@@ -17,6 +17,15 @@ The workflow is built on a robust, asynchronous event-driven architecture to ens
 3. **Contextual Generation:** Distinct LLM branches process the categorized request using highly restrictive System Prompts to ensure tone consistency, precise name extraction, and localized language matching.
 4. **Audit Logging:** Every interaction is automatically logged into a centralized dashboard for Quality Assurance (QA) and performance tracking.
 
+   ### 🚨 V2 Update: Automated Triage & Dynamic SLA Management
+
+The system has been upgraded from a standard classification routing to a fully autonomous **Technical Dispatch & Triage Center**. When a `Technical Issue` is detected, the workflow now triggers a secondary AI-driven evaluation process:
+
+*   **Granular Categorization:** Issues are strictly parsed into operational departments (`hvac`, `plumbing`, `electrical`, `pool`, `general_maintenance`) strictly outputted in pure JSON to eliminate data-parsing errors.
+*   **Priority Triage (P1-P3 Matrix):** The AI autonomously evaluates the urgency of the issue without human intervention. Critical threats (e.g., power outages, massive leaks) are flagged as `p1` (Urgent), while routine inconveniences are assigned `p2` or `p3`.
+*   **Dynamic SLA Calculation:** An integrated code logic calculates targeted response deadlines based on the assigned priority (e.g., assigning a strict "30 minutes" deadline for `p1` issues).
+*   **Visual Dispatch Dashboard:** Data is perfectly serialized and pushed to a Google Sheets dashboard where conditional formatting provides real-time, color-coded visual alerts (Red for P1) for the technical ground team.
+
 ## 📊 Performance Metrics (Simulated Q3 Cohort)
 A rigorous stress test of 15 edge-case scenarios was conducted. The results demonstrate flawless execution:
 
