@@ -39,6 +39,9 @@ To guarantee enterprise-grade operational efficiency, the workflow introduces an
 To maintain a zero-fail operational environment in luxury hospitality, V2 integrates a robust error-handling architecture:
 *   **Schema Validation & Dead Letter Queue:** If the LLM hallucinates, outputs an invalid JSON format, or fails to categorize the issue confidently, the system immediately halts the automated dispatch.
 *   **Automated Error Reporting:** Failed executions bypass the standard workflow and are automatically pushed to a designated "Human Review / Error Log" channel. This guarantees that no guest request is ever lost due to an API timeout or parsing error.
+  
+   #### 📊 Visual Dispatch Command Center
+The processed data is serialized and pushed to a Google Sheets-based UI. Leveraging advanced conditional formatting, the dashboard provides real-time, color-coded visual alerts (e.g., High-contrast Red for P1 emergencies) to give technical teams instant situational awareness.
 
   ## 📅 Calendar Sync & Conflict Detection
 
@@ -51,9 +54,6 @@ Automated reservation management across multiple platforms:
 - Back-to-back turnover support (checkout day = check-in day)
 
 **Test Results:** 11/11 reservations processed correctly
-
-#### 📊 Visual Dispatch Command Center
-The processed data is serialized and pushed to a Google Sheets-based UI. Leveraging advanced conditional formatting, the dashboard provides real-time, color-coded visual alerts (e.g., High-contrast Red for P1 emergencies) to give technical teams instant situational awareness.
 
 ## 📊 Performance Metrics (Simulated Q3 Cohort)
 A rigorous stress test of 15 edge-case scenarios was conducted. The results demonstrate flawless execution:
