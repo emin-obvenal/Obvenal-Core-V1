@@ -1,0 +1,755 @@
+{
+  "name": "Obvenal Calendar Sync V1",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1408,
+        -32
+      ],
+      "id": "1d1ce052-225d-4d39-832a-dc2475004aef",
+      "name": "TriggerManually"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "megps365@gmail.com",
+          "mode": "list",
+          "cachedResultName": "megps365@gmail.com"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        -1184,
+        -32
+      ],
+      "id": "3321cbdd-abd6-4906-81e6-9ffe266cb8a9",
+      "name": "Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "qw6XLcjRppRvXlxH",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "CMuIBe9CJ93G22F1",
+          "mode": "list",
+          "cachedResultName": "obvenal-calender-sync-v1",
+          "cachedResultUrl": "/projects/KVBjpQpyrkFle4dE/datatables/CMuIBe9CJ93G22F1"
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -960,
+        -32
+      ],
+      "id": "a236f2e7-2c26-400a-9728-e802de372708",
+      "name": "MockBookingData",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const currentBooking = $json;\nconst checkIn = new Date(currentBooking.check_in);\nconst checkOut = new Date(currentBooking.check_out);\nconst villa = currentBooking.villa;\n\n// Tüm mock data'yı al\nconst allBookings = $('MockBookingData').all();\n\nconst hasConflict = allBookings.some(booking => {\n  // Kendisiyle karşılaştırma\n  if (booking.json.booking_id === currentBooking.booking_id) return false;\n  \n  // Farklı villa ise çakışma yok\n  if (booking.json.villa !== villa) return false;\n  \n  // İptal veya maintenance ise çakışma yok\n  if (['cancelled', 'maintenance'].includes(booking.json.status)) return false;\n  \n  const bStart = new Date(booking.json.check_in);\n  const bEnd = new Date(booking.json.check_out);\n  \n  return checkIn < bEnd && checkOut > bStart;\n});\n\nreturn [{ json: { ...currentBooking, has_conflict: hasConflict } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -128,
+        -32
+      ],
+      "id": "9af57aec-379a-4b1e-8750-dc2498578954",
+      "name": "CalculateConflict"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "24739a39-c2b3-4300-a9ce-964729546ae8",
+              "leftValue": "={{ $json.has_conflict }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        80,
+        -32
+      ],
+      "id": "03abffdc-9f1a-463b-8050-7d4fadc6f9db",
+      "name": "CheckDateOverlap"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "megps365@gmail.com",
+          "mode": "list",
+          "cachedResultName": "megps365@gmail.com"
+        },
+        "start": "={{ $('MockBookingData').item.json.check_in }}",
+        "end": "={{ $('MockBookingData').item.json.check_out }}",
+        "additionalFields": {
+          "description": "=Platform: {{ $json.platform }} | Status: {{ $json.status }}",
+          "summary": "={{ $json.villa }} — {{ $json.guest_name }} ({{ $json.platform }})"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        224,
+        -192
+      ],
+      "id": "f7015e41-7ee5-4b33-b650-4c08fd6ad32b",
+      "name": "NoConflictAction",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "qw6XLcjRppRvXlxH",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Guest: {{ $('MockBookingData').item.json.guest_name }}\nVilla: {{ $('MockBookingData').item.json.villa }}\nCheck-in: {{ $('MockBookingData').item.json.check_in }}\nCheck-out: {{ $('MockBookingData').item.json.check_out }}\nPlatform: {{ $('MockBookingData').item.json.platform }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "**Role:** Senior Guest Experience Manager at a luxury property management company.  **Context:** Our automated n8n pipeline has successfully verified and scheduled a new reservation. There are no calendar conflicts, and the booking is 100% confirmed. We now need to send an immediate, highly personalized confirmation email to the guest. The tone must be luxurious, welcoming, professional, and reassuring.  **Task:** Write a warm and elegant confirmation email using the provided guest data. You must explicitly mention: - The specific villa they booked. - Their exact check-in and check-out dates. - A brief appreciation for booking through their specific platform (e.g., Airbnb, Direct, Booking.com). - A polite note stating that check-in instructions and house manuals will be sent a few days prior to their arrival.  **Target Audience:** Premium guests who have booked a luxury vacation. They expect a frictionless, high-end hospitality experience, clarity regarding their dates, and top-tier customer service.  **Input Format:** You will receive the reservation details in JSON format (including guest_name, villa, check_in, check_out, platform).  Output ONLY the final email content. Start strictly with a compelling \"Subject: ...\" line, followed by the email body. Use clean formatting with appropriate paragraph breaks. Do NOT output any conversational filler, explanations, or introductory text like \"Here is the email:\"."
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        448,
+        -272
+      ],
+      "id": "5f215874-201a-4428-8ecc-27d039de5156",
+      "name": "AutomaticMailCreator"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.1-flash-lite",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        448,
+        -32
+      ],
+      "id": "54dd6a82-3f4c-444f-b3b4-2e549f430da7",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "mMBJ1eFwcVCfsZIj",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Guest: {{ $('MockBookingData').item.json.guest_name }}\nVilla: {{ $('MockBookingData').item.json.villa }}\nCheck-in: {{ $('MockBookingData').item.json.check_in }}\nCheck-out: {{ $('MockBookingData').item.json.check_out }}\nPlatform: {{ $('MockBookingData').item.json.platform }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "**Role:** Senior Guest Relations Specialist and Crisis Manager at a luxury property management company.  **Context:** Our automated n8n pipeline has detected a severe calendar conflict (such as a double-booking or unexpected maintenance) for a newly submitted reservation. We cannot accommodate the guest's request. We must send an immediate, highly professional, and deeply empathetic cancellation/rejection email. The tone must be apologetic, transparent, and solution-oriented to protect the brand's luxury reputation.  **Task:** Write a polite and empathetic rejection email using the provided guest data. You must explicitly: - Address the guest by name and mention the specific villa they attempted to book. - State clearly but diplomatically that due to an unforeseen calendar synchronization error (or prior commitment), their requested dates (check-in to check-out) are regrettably unavailable. - Reassure them that no charges will be processed, or if they booked via a specific platform (like Airbnb or Booking.com), that a full refund process has been initiated immediately. - Offer warm assistance in finding alternative dates or other available properties in our portfolio.  **Target Audience:** Premium guests whose vacation plans are being disrupted. They are likely to be disappointed or frustrated, so they require the utmost respect, empathy, and immediate clarity.  **Input Format:** You will receive the reservation details in JSON format (including guest_name, villa, check_in, check_out, platform).  Output ONLY the final email content. Start strictly with a clear and professional \"Subject: ...\" line, followed by the email body. Use clean formatting with appropriate paragraph breaks. Do NOT output any conversational filler, explanations, or introductory text."
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        432,
+        224
+      ],
+      "id": "70e7eb22-44f9-460a-bb3c-e6a7e0fe8dd4",
+      "name": "AutomaticMailCreator1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -720,
+        -32
+      ],
+      "id": "ff61284e-226a-455c-8c1f-61f29a3412cc",
+      "name": "Loop"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        -144
+      ],
+      "id": "aff0f23e-4c3e-4f56-a674-34ffa2560a06",
+      "name": "NoOperation"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1136,
+        208
+      ],
+      "id": "c39dc9cb-95fd-4dda-bfbe-9b86b750bb60",
+      "name": "Wait",
+      "webhookId": "807ae918-f8ca-4629-a08f-278db9c5fe1a"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "599407fc-6276-4a67-9b66-f2f5f1864249",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "maintenance",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "f5460b45-5865-44a3-9bf8-5910e9afd6e1",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "cancelled",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -480,
+        16
+      ],
+      "id": "76d5e94c-b6f6-45f2-a7f9-17100197545c",
+      "name": "FilterActiveBookings"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1etYleU-dOsM4hJyaZMjGIjLL2LCFPAQu4COP-P0kxIA",
+          "mode": "list",
+          "cachedResultName": "Obvenal Calendar Sync V1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1etYleU-dOsM4hJyaZMjGIjLL2LCFPAQu4COP-P0kxIA/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1etYleU-dOsM4hJyaZMjGIjLL2LCFPAQu4COP-P0kxIA/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "booking_id": "={{ $('MockBookingData').item.json.booking_id }}",
+            "guest_name": "={{ $('MockBookingData').item.json.guest_name }}",
+            "villa": "={{ $('MockBookingData').item.json.villa }}",
+            "check_in": "={{ $('MockBookingData').item.json.check_in }}",
+            "check_out": "={{ $('MockBookingData').item.json.check_out }}",
+            "platform": "={{ $('MockBookingData').item.json.platform }}",
+            "status": "={{ $('MockBookingData').item.json.status }}",
+            "notes": "={{ $('MockBookingData').item.json.notes }}",
+            "e-mail_draft": "={{ $json.text }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "booking_id",
+              "displayName": "booking_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "guest_name",
+              "displayName": "guest_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "villa",
+              "displayName": "villa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "check_in",
+              "displayName": "check_in",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "check_out",
+              "displayName": "check_out",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "platform",
+              "displayName": "platform",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notes",
+              "displayName": "notes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "e-mail_draft",
+              "displayName": "e-mail_draft",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        896,
+        0
+      ],
+      "id": "442bc02f-e9be-40cc-b42a-edbe87b3f175",
+      "name": "SheetRaport",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "uRIyeoPleBl5Qty1",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1etYleU-dOsM4hJyaZMjGIjLL2LCFPAQu4COP-P0kxIA",
+          "mode": "list",
+          "cachedResultName": "Obvenal Calendar Sync V1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1etYleU-dOsM4hJyaZMjGIjLL2LCFPAQu4COP-P0kxIA/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1etYleU-dOsM4hJyaZMjGIjLL2LCFPAQu4COP-P0kxIA/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "booking_id": "={{ $('MockBookingData').item.json.booking_id }}",
+            "guest_name": "={{ $('MockBookingData').item.json.guest_name }}",
+            "villa": "={{ $('MockBookingData').item.json.villa }}",
+            "check_in": "={{ $('MockBookingData').item.json.check_in }}",
+            "check_out": "={{ $('MockBookingData').item.json.check_out }}",
+            "platform": "={{ $('MockBookingData').item.json.platform }}",
+            "status": "={{ $('MockBookingData').item.json.status }}",
+            "notes": "={{ $json.status }} - no email sent",
+            "e-mail_draft": "=N/A"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "booking_id",
+              "displayName": "booking_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "guest_name",
+              "displayName": "guest_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "villa",
+              "displayName": "villa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "check_in",
+              "displayName": "check_in",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "check_out",
+              "displayName": "check_out",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "platform",
+              "displayName": "platform",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notes",
+              "displayName": "notes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "e-mail_draft",
+              "displayName": "e-mail_draft",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -272,
+        208
+      ],
+      "id": "31975111-52ac-4880-b01f-0ea29cbc9d64",
+      "name": "SheetRaport1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "uRIyeoPleBl5Qty1",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "TriggerManually": {
+      "main": [
+        [
+          {
+            "node": "Calendar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calendar": {
+      "main": [
+        [
+          {
+            "node": "MockBookingData",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MockBookingData": {
+      "main": [
+        [
+          {
+            "node": "Loop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CalculateConflict": {
+      "main": [
+        [
+          {
+            "node": "CheckDateOverlap",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CheckDateOverlap": {
+      "main": [
+        [
+          {
+            "node": "NoConflictAction",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AutomaticMailCreator1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NoConflictAction": {
+      "main": [
+        [
+          {
+            "node": "AutomaticMailCreator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AutomaticMailCreator",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "AutomaticMailCreator1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AutomaticMailCreator": {
+      "main": [
+        [
+          {
+            "node": "SheetRaport",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AutomaticMailCreator1": {
+      "main": [
+        [
+          {
+            "node": "SheetRaport",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop": {
+      "main": [
+        [
+          {
+            "node": "NoOperation",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "FilterActiveBookings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FilterActiveBookings": {
+      "main": [
+        [
+          {
+            "node": "CalculateConflict",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "SheetRaport1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SheetRaport": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SheetRaport1": {
+      "main": [
+        [
+          {
+            "node": "Loop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "c3c8488a-bfb4-4fc5-b280-11bc567fb217",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "89621bd9dc21eceb1fdecb7176d0f29006f1faa74998e5f784e31bfeb6e3ea58"
+  },
+  "nodeGroups": [],
+  "id": "ZwfR8qe6x2RYoVa3",
+  "tags": [
+    {
+      "updatedAt": "2026-07-26T13:21:20.475Z",
+      "createdAt": "2026-07-26T13:21:20.475Z",
+      "id": "wRyfWZ5Cu8E8UsyV",
+      "name": "obvenal"
+    }
+  ]
+}
