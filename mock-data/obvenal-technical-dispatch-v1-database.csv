@@ -1,0 +1,16 @@
+ticket_id,timestamp,guest_name,villa_name,contact_method,issue_description
+TCK-9021,2026-07-28T14:30:00Z,Alexander Pierce,Villa Aurora,WhatsApp,"The infinity pool water is freezing and the digital thermostat on the patio is completely blank. We have a sunset party in 3 hours, this needs to be fixed immediately."
+TCK-9022,2026-07-28T15:15:22Z,Sophia Loren,Chalet Blanc,Guest App,"Our private chef is trying to use the double induction ovens for dinner prep, but turning them on keeps tripping the main breaker. Now the kitchen and the dining room are completely in the dark."
+TCK-9023,2026-07-28T16:05:10Z,Marcus Chen,Penthouse Azure,SMS,"The smart ventilation system in the master suite is making a loud rattling noise, and it's blowing lukewarm air instead of cooling the room. We cannot sleep with this noise."
+TCK-9024,2026-07-28T16:40:05Z,Eleanor Vance,Villa Sol,WhatsApp,We had an accident in the main lounge. A full bottle of red wine shattered on the white Persian rug. There is glass everywhere and the stain is spreading. Please send someone right away before it ruins the fabric.
+TCK-9025,2026-07-28T17:10:45Z,John Doe,Villa Toscana,Guest App,"Hello, something is malfunctioning in the basement entertainment room. Can a technician come over as soon as possible?"
+TCK-9026,2026-07-28T17:25:30Z,Mia Wong,Villa Luna,SMS,🥶 ❄️ 🧊 master bedroom...
+TCK-9027,2026-07-28T18:00:12Z,Bruce Wayne,Villa Serena,WhatsApp,"The jacuzzi water looks very cloudy and there is a strange gurgling sound coming from the skimmer. Also, I think the underwater lights are shorting out because they keep flickering."
+TCK-9028,2026-07-28T18:45:50Z,Jane Smith,Penthouse Azure,Guest App,It stopped working.
+TCK-9029,2026-07-28T19:10:05Z,Clark Kent,Villa Aurora,WhatsApp,"The power went out in the west wing of the house, and now the electric garage door won't open. Our rental car is stuck inside and we have a dinner reservation."
+TCK-9030,2026-07-28T19:35:40Z,Oliver Twist,Chalet Blanc,Guest App,"The previous guests must have had a dog. There is pet hair all over the velvet sofa in the cinema room. We need a deep clean immediately, my wife is allergic."
+TCK-9031,2026-07-28T20:05:15Z,Emma Watson,Villa Luna,SMS,It's freezing in the living room. The underfloor heating doesn't seem to be activating even though the wall panel says it's on.
+TCK-9032,2026-07-28T20:22:10Z,Carlos Sainz,Villa Sol,WhatsApp,"Someone dropped a glass tray by the pool. There is shattered glass everywhere on the wet deck, and some of it got into the jacuzzi filter. It's too dangerous to walk barefoot."
+TCK-9033,2026-07-28T20:50:33Z,Liam Neeson,Villa Serena,Guest App,The waterfall feature in the main pool is stuck on the highest setting and water is starting to flood the wooden deck. We can't find the valve to turn it off.
+TCK-9034,2026-07-28T21:15:00Z,Isabella Rossi,Villa Toscana,SMS,🔌⚡ dark.
+TCK-9035,2026-07-28T21:40:45Z,James Holden,Penthouse Azure,WhatsApp,Can you send someone from management? The electronic safe in the master closet won't accept my PIN and my passport is locked inside. We have a flight tomorrow morning.
