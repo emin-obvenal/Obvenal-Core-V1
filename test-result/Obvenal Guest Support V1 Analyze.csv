@@ -1,0 +1,76 @@
+timestamp,customer_name,message_text,expected_catagory,gpt_catagory,gpt_response,correct
+2026-07-27T15:54:48.520Z,Carlos M.,¿A qué hora es el check-out en Villa Sol de Mallorca?, General Info,general,"Estimado Carlos,
+
+El horario habitual de check-out en Villa Sol de Mallorca es a las 11:00 AM, aunque con gusto podemos coordinar una salida posterior para garantizar que su partida sea completamente cómoda y sin prisas. Asimismo, permítanos saber si desea que organicemos un traslado privado en vehículo de alta gama o un último desayuno preparado por nuestro chef exclusivo antes de su partida.
+
+Su Obvenal Concierge Team",TRUE
+2026-07-27T15:55:21.742Z,Giulia B.,non funziona niente, Technical Issue,technical,"Cara Giulia,
+
+mi dispiace sinceramente per questo disagio inaspettato e mi scuso profondamente per l'interruzione del vostro comfort. Ho già allertato il nostro tecnico specializzato, che arriverà in villa entro le prossime due ore per risolvere tempestivamente la situazione. Nel frattempo, vi invito a concedervi un momento di relax nel nostro giardino, mentre noi ci occupiamo di ripristinare tutto alla perfezione.
+
+Your Obvenal Concierge Team",TRUE
+2026-07-27T15:55:55.664Z,Jean-Paul,"Au feu ! La cuisine de la Casa Rosa est en feu, appelez les pompiers !", Emergency,emergency,"Cher Jean-Paul,
+
+Restez en sécurité et éloignez-vous immédiatement de la zone de danger ; les pompiers ont été contactés à l'instant et font route vers la villa en urgence.
+
+Your Obvenal Concierge Team",TRUE
+2026-07-27T15:56:29.032Z,Klaus W.,Wo?, General Info,general,"Dear Klaus,
+
+Obvenal villas are nestled in the most prestigious and secluded coastal enclaves, offering absolute privacy paired with breathtaking panoramic views. To elevate your stay with us, may I arrange a private airport transfer in a luxury vehicle or perhaps reserve a premier private chef for your arrival evening? 
+
+Your Obvenal Concierge Team",FALSE
+2026-07-27T15:57:02.454Z,Emily R.,The AC in the master bedroom of Villa Toscana is leaking water heavily onto the floor., Technical Issue,technical,"Dear Emily,
+
+I am deeply sorry for this inconvenient disruption to your stay at Villa Toscana, and I completely understand your concern regarding the leaking air conditioning unit. Our lead maintenance technician has already been notified and will arrive at the villa within the next two hours to resolve this completely. In the meantime, I have dispatched our housekeeping team to attend to the flooring immediately so you can remain entirely comfortable. 
+
+Your Obvenal Concierge Team",TRUE
+2026-07-27T15:57:35.391Z,Unknown,🆘🆘🚑🩸, Emergency,emergency,"Dear Guest,
+
+Please remain as calm as possible and stay where you are; local emergency medical services have already been contacted and are dispatching units to the villa immediately. Our security team is also rushing to your location right now to assist you.
+
+Your Obvenal Concierge Team",TRUE
+2026-07-27T15:58:09.145Z,Lorenzo F.,Possiamo avere degli asciugamani extra a Villa Serena?, General Info,general,"Caro Lorenzo,
+
+Certamente, faremo recapitare immediatamente una fornitura di soffici asciugamani extra direttamente a Villa Serena. Nel frattempo, desidera che organizzi un trasferimento privato in auto o che prenoti uno dei nostri chef privati per una cena esclusiva durante il vostro soggiorno? 
+
+Your Obvenal Concierge Team",TRUE
+2026-07-27T15:58:43.074Z,Sophie L.,Le portail électrique de la Finca Sol ne s'ouvre plus. Nous sommes bloqués dehors., Technical Issue,technical,"Dear Sophie,
+
+Please accept my sincere apologies for this frustrating situation and the disruption to your arrival. I have immediately notified our lead technician, who is on his way and will arrive at the villa within the next 2 hours to resolve the gate's electrical issue. In the meantime, you may use the manual override key located in the small security box by the pillar, and our team will be there shortly to assist you further.
+
+Your Obvenal Concierge Team",TRUE
+2026-07-27T15:59:15.906Z,Hans M.,Hilfe!!!, Emergency,emergency,"Dear Hans,
+
+Please stay calm and remain in a safe location; local emergency services have been contacted immediately and are on their way to the villa right now. Our security team is also rushing to your exact position to assist you. 
+
+Your Obvenal Concierge Team",TRUE
+2026-07-27T15:59:49.146Z,John D.,❓🗝️, General Info,general,"Dear John,
+
+I hope you are settling into your villa wonderfully and enjoying the absolute peace of your surroundings. Whether you require details regarding the villa's amenities, local recommendations, or assistance with our bespoke services—such as arranging a private chef or a luxury yacht charter—I am entirely at your service. Please let me know how I may assist in making your stay exceptionally seamless. 
+
+Your Obvenal Concierge Team",TRUE
+2026-07-27T16:00:23.077Z,Maria G.,Internet malo., Technical Issue,technical,"Dear Maria,
+
+Please accept my sincere apologies for the inconvenience with the internet connection during your stay. I have already notified our technical team, and a technician will arrive at the villa within the next two hours to resolve this for you. In the meantime, you are welcome to use the high-speed connection in our main lounge area as a temporary workaround.
+
+Your Obvenal Concierge Team",TRUE
+2026-07-27T16:00:56.451Z,Marco A.,Qualcuno sta cercando di forzare la porta sul retro di Villa Bella! Aiuto!, Emergency,emergency,"Dear Marco,
+
+Stay away from the doors and find a secure, locked room immediately. Local law enforcement has been dispatched and is rushing to Villa Bella right now.
+
+Your Obvenal Concierge Team",TRUE
+2026-07-27T16:01:30.768Z,Camille D.,Piscine ?, General Info,general,"Dear Camille,
+
+Oui, votre villa dispose d'une magnifique piscine privée à débordement, chauffée et entretenue quotidiennement pour votre plus grand confort. Pour sublimer votre séjour, nous serions ravis d'organiser un service de chef privé au bord de l'eau ou de réserver un yacht exclusif pour une journée en mer. 
+
+Your Obvenal Concierge Team",TRUE
+2026-07-27T16:02:03.939Z,Lukas S.,🥶🌡️ ❄️, Technical Issue,technical,"Dear Lukas,
+
+Please accept my sincere apologies for the discomfort with the climate control in your villa; I understand how disruptive this is to your relaxation. I have immediately dispatched our senior technician, who will arrive at the villa within the next two hours to resolve this issue completely. In the meantime, please feel free to use the plush cashmere throws located in the living area for extra warmth, and let me know if I can arrange anything else to enhance your comfort.
+
+Your Obvenal Concierge Team",TRUE
+2026-07-27T16:02:36.757Z,Sarah W.,"There is a massive gas smell in the kitchen of Chalet Blanc, I feel dizzy.", Emergency,emergency,"Dear Sarah,
+
+Please evacuate the kitchen immediately and step outside into the fresh air to stay safe. Emergency medical services and the fire department have already been contacted and are on their way to your location right now.
+
+Your Obvenal Concierge Team",TRUE
