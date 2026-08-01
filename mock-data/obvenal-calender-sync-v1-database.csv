@@ -1,0 +1,12 @@
+﻿id,booking_id,guest_name,villa,check_in,check_out,platform,status,guests_count,notes,createdAt,updatedAt
+1,RES-1001,Eleanor Vance,Villa Aurora,2026-08-15T01:00:00.000Z,2026-08-20T01:00:00.000Z,Airbnb,confirmed,4,Baseline: Standard error-free booking,2026-08-01T08:09:59.056Z,2026-08-01T08:09:59.056Z
+2,RES-1002,Marcus Chen,Chalet Blanc,2026-08-10T01:00:00.000Z,2026-08-14T01:00:00.000Z,Direct,confirmed,2,Baseline: Standard error-free booking,2026-08-01T08:09:59.056Z,2026-08-01T08:09:59.056Z
+3,RES-1003,Sophia Loren,Villa Luna,2026-08-22T01:00:00.000Z,2026-08-28T01:00:00.000Z,Booking.com,confirmed,6,Baseline: Standard error-free booking,2026-08-01T08:09:59.056Z,2026-08-01T08:09:59.056Z
+4,RES-1004,John Doe,Penthouse Azure,2026-08-05T01:00:00.000Z,2026-08-10T01:00:00.000Z,Vrbo,confirmed,2,Edge Case 1: Double booking (Winning/Primary),2026-08-01T08:09:59.056Z,2026-08-01T08:09:59.056Z
+5,RES-1005,Jane Smith,Penthouse Azure,2026-08-05T01:00:00.000Z,2026-08-10T01:00:00.000Z,Airbnb,pending,3,Edge Case 1: Double booking (Conflict/Secondary),2026-08-01T08:09:59.056Z,2026-08-01T08:09:59.056Z
+6,RES-1006,Bruce Wayne,Villa Toscana,2026-08-12T01:00:00.000Z,2026-08-16T01:00:00.000Z,Direct,confirmed,5,Edge Case 2: Back-to-back turnover (Checkout Day),2026-08-01T08:09:59.056Z,2026-08-01T08:09:59.056Z
+7,RES-1007,Clark Kent,Villa Toscana,2026-08-16T01:00:00.000Z,2026-08-20T01:00:00.000Z,Airbnb,confirmed,4,Edge Case 2: Back-to-back turnover (Check-in Day),2026-08-01T08:09:59.056Z,2026-08-01T08:09:59.056Z
+8,RES-1008,Oliver Twist,Villa Sol,2026-08-18T01:00:00.000Z,2026-08-25T01:00:00.000Z,Booking.com,cancelled,2,Edge Case 3: Cancelled booking causing phantom overlap,2026-08-01T08:09:59.056Z,2026-08-01T08:09:59.056Z
+9,RES-1009,Mia Wong,Villa Sol,2026-08-19T01:00:00.000Z,2026-08-24T01:00:00.000Z,Direct,confirmed,2,Edge Case 3: Valid active booking over cancelled dates,2026-08-01T08:09:59.056Z,2026-08-01T08:09:59.056Z
+10,RES-1010,HVAC System Upgrade,Villa Serena,2026-08-01T01:00:00.000Z,2026-08-03T01:00:00.000Z,Internal,maintenance,0,Edge Case 3: Maintenance block system must ignore or route differently,2026-08-01T08:09:59.056Z,2026-08-01T08:09:59.056Z
+11,RES-1011,James Holden,Villa Aurora,2026-08-05T01:00:00.000Z,2026-08-10T01:00:00.000Z,Direct,confirmed,2,Sanity check: Same dates as RES-1004 but different villa — NO conflict,2026-08-01T08:09:59.056Z,2026-08-01T08:09:59.056Z
