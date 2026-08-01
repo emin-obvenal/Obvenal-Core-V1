@@ -21,18 +21,6 @@ The workflow is built on a robust, asynchronous event-driven architecture to ens
 
 In the V2 iteration, the Obvenal AI core transitions from a simple intent classifier into a fully autonomous operational dispatch center. The system now not only understands the guest's issue but actively calculates risk, delegates tasks to specific departments, and enforces strict Service Level Agreements (SLAs).
 
-  ## 📅 Calendar Sync & Conflict Detection
-
-Automated reservation management across multiple platforms:
-
-- Multi-villa conflict detection (same dates, different properties handled correctly)
-- Maintenance block filtering — internal blocks never trigger guest emails
-- Automated confirmation/rejection email generation via Gemini
-- Cancelled reservation ghost conflict resolution
-- Back-to-back turnover support (checkout day = check-in day)
-
-**Test Results:** 11/11 reservations processed correctly
-
 
 #### ⚙️ Enhanced Routing & Granular Triage
 *   **Deterministic JSON Parsing:** The AI's generative output is strictly constrained to a predefined JSON schema. This eliminates unstructured text parsing errors and ensures 100% data compatibility with downstream API nodes.
@@ -51,6 +39,18 @@ To guarantee enterprise-grade operational efficiency, the workflow introduces an
 To maintain a zero-fail operational environment in luxury hospitality, V2 integrates a robust error-handling architecture:
 *   **Schema Validation & Dead Letter Queue:** If the LLM hallucinates, outputs an invalid JSON format, or fails to categorize the issue confidently, the system immediately halts the automated dispatch.
 *   **Automated Error Reporting:** Failed executions bypass the standard workflow and are automatically pushed to a designated "Human Review / Error Log" channel. This guarantees that no guest request is ever lost due to an API timeout or parsing error.
+
+  ## 📅 Calendar Sync & Conflict Detection
+
+Automated reservation management across multiple platforms:
+
+- Multi-villa conflict detection (same dates, different properties handled correctly)
+- Maintenance block filtering — internal blocks never trigger guest emails
+- Automated confirmation/rejection email generation via Gemini
+- Cancelled reservation ghost conflict resolution
+- Back-to-back turnover support (checkout day = check-in day)
+
+**Test Results:** 11/11 reservations processed correctly
 
 #### 📊 Visual Dispatch Command Center
 The processed data is serialized and pushed to a Google Sheets-based UI. Leveraging advanced conditional formatting, the dashboard provides real-time, color-coded visual alerts (e.g., High-contrast Red for P1 emergencies) to give technical teams instant situational awareness.
