@@ -1,0 +1,189 @@
+booking_id,guest_name,villa,check_in,check_out,platform,status,notes,e-mail_draft
+RES-1001,Eleanor Vance,Villa Aurora,2026-08-15T04:00:00.000Z,2026-08-20T04:00:00.000Z,Airbnb,confirmed,Baseline: Standard error-free booking,"Subject: Your Upcoming Escape to Villa Aurora
+
+Dear Eleanor Vance,
+
+It is an absolute pleasure to confirm your upcoming stay at Villa Aurora. Thank you for choosing us to host your retreat; we are delighted that you selected our property via Airbnb, and we look forward to ensuring your experience is nothing short of exceptional.
+
+We have successfully secured your reservation for the following dates:
+
+**Check-in:** August 15, 2026
+**Check-out:** August 20, 2026
+
+At Villa Aurora, we pride ourselves on providing a seamless and tranquil environment. Our team is already preparing for your arrival to ensure every detail is perfectly aligned with your expectations.
+
+To allow you to focus entirely on the anticipation of your journey, please note that we will send a comprehensive digital guide, including your personalized check-in instructions and our house manual, a few days prior to your arrival. This document will ensure you have all the necessary information for a smooth and effortless transition into your villa.
+
+Should you require any assistance with concierge services, local recommendations, or specific arrangements prior to your stay, please do not hesitate to reach out. We are here to curate a truly bespoke experience for you.
+
+We look forward to welcoming you soon.
+
+Warmest regards,
+
+The Guest Experience Team
+Luxury Property Management"
+RES-1002,Marcus Chen,Chalet Blanc,2026-08-10T04:00:00.000Z,2026-08-14T04:00:00.000Z,Direct,confirmed,Baseline: Standard error-free booking,"Subject: Your upcoming stay at Chalet Blanc | Confirmation
+
+Dear Marcus Chen,
+
+It is a true pleasure to confirm your upcoming reservation with us. Thank you for choosing to book directly; we appreciate the opportunity to personally oversee your stay and ensure every detail meets our highest standards of excellence.
+
+We are delighted to welcome you to Chalet Blanc. Your stay is confirmed for the following dates:
+
+Check-in: August 10, 2026
+Check-out: August 14, 2026
+
+At our property, we strive to provide a seamless and sophisticated experience from the moment you arrive. To ensure your transition into relaxation is as smooth as possible, we will reach out to you a few days prior to your arrival with comprehensive check-in instructions and our digital house manual, which contains everything you need to know about your villa’s amenities and our local recommendations.
+
+Should you require any assistance with concierge services, transportation arrangements, or specific guest preferences in the meantime, please do not hesitate to contact us. We are dedicated to making your visit to Chalet Blanc truly unforgettable.
+
+Warmest regards,
+
+Guest Experience Management
+Luxury Property Management Team"
+RES-1003,Sophia Loren,Villa Luna,2026-08-22T04:00:00.000Z,2026-08-28T04:00:00.000Z,Booking.com,confirmed,Baseline: Standard error-free booking,"Subject: Your Upcoming Stay at Villa Luna | A Bespoke Coastal Retreat
+
+Dear Sophia Loren,
+
+It is a true pleasure to confirm your upcoming stay at the exquisite Villa Luna. We are delighted that you have chosen to experience our property, and we are honored to host you for what promises to be a truly memorable retreat.
+
+We would like to express our sincere appreciation for choosing to book your stay with us via Booking.com. It is our priority to ensure your experience with us is as seamless and sophisticated as the villa itself.
+
+**Reservation Details:**
+*   **Villa:** Villa Luna
+*   **Check-in:** August 22, 2026
+*   **Check-out:** August 28, 2026
+
+Our team is already beginning the preparations to ensure every detail of Villa Luna meets our exacting standards of luxury and comfort prior to your arrival.
+
+To ensure your journey to us remains effortless, please be advised that a comprehensive guest folio, including your personalized check-in instructions and our curated digital house manual, will be sent to you a few days prior to your arrival date. 
+
+Should you require any concierge assistance or have specific requests in the interim to enhance your stay, please do not hesitate to contact us. We remain entirely at your service.
+
+Warmest regards,
+
+Senior Guest Experience Manager
+Luxury Property Management Team"
+RES-1004,John Doe,Penthouse Azure,2026-08-05T04:00:00.000Z,2026-08-10T04:00:00.000Z,Vrbo,confirmed,Edge Case 1: Double booking (Winning/Primary),"Subject: Important update regarding your stay at Penthouse Azure
+
+Dear John Doe,
+
+Thank you for choosing to book with us for your upcoming stay at Penthouse Azure. I am writing to you today with my sincerest apologies regarding your reservation from August 5, 2026, to August 10, 2026.
+
+Regrettably, due to an unforeseen calendar synchronization error between our internal system and the Vrbo platform, the Penthouse Azure has become unavailable for your requested dates. We pride ourselves on providing a seamless experience for our guests, and I am deeply sorry for this failure in our process and the resulting disruption to your travel plans.
+
+Please be assured that I have immediately initiated the process to ensure a full refund of your reservation deposit through Vrbo. You should see these funds returned to your original payment method in accordance with their standard processing timelines.
+
+I understand how frustrating it is to have your arrangements disrupted. As a gesture of our commitment to your experience, I would be honored to personally assist you in finding alternative dates for your stay at Penthouse Azure, or to help you secure a comparable luxury property within our portfolio that meets your requirements.
+
+Please let me know if you would like me to curate a selection of available options for you, or if there is anything else I can do to assist you during this time. We value your patronage and truly hope to have the opportunity to provide you with the exceptional experience you deserve in the future.
+
+Warm regards,
+
+Senior Guest Relations Specialist
+Luxury Property Management Team"
+RES-1005,Jane Smith,Penthouse Azure,2026-08-05T04:00:00.000Z,2026-08-10T04:00:00.000Z,Airbnb,pending,Edge Case 1: Double booking (Conflict/Secondary),"Subject: Important Update Regarding Your Reservation at Penthouse Azure
+
+Dear Jane Smith,
+
+Thank you for choosing to stay with us. We were truly honored that you selected Penthouse Azure for your upcoming getaway from August 5th to August 10th, 2026.
+
+I am writing to you today with my sincerest apologies. Due to an unforeseen synchronization error within our internal calendar system, we have discovered that Penthouse Azure is, regrettably, unavailable for your requested dates. As a property dedicated to providing a flawless experience, it is clear that we failed to meet our own standards of excellence in managing this reservation. 
+
+Please be assured that I have taken immediate action to initiate a full refund of your booking through Airbnb. You should receive a notification regarding the processing of these funds shortly; no charges will be applied to your account.
+
+We understand how disappointing this disruption to your travel plans is, and for that, I am deeply sorry. I would welcome the opportunity to personally assist you in securing an alternative property within our portfolio that offers a similar level of luxury and comfort, or to help you rebook Penthouse Azure for a future time when it is available. 
+
+Our team is standing by to prioritize your needs and ensure your next experience with us is nothing short of exceptional. Please let me know how you would like to proceed, or if there is anything I can do to assist you further during this time.
+
+Warm regards,
+
+Senior Guest Relations Management
+Luxury Property Management Team"
+RES-1006,Bruce Wayne,Villa Toscana,2026-08-12T04:00:00.000Z,2026-08-16T04:00:00.000Z,Direct,confirmed,Edge Case 2: Back-to-back turnover (Checkout Day),"Subject: Your Upcoming Stay at Villa Toscana | Confirmation
+
+Dear Mr. Wayne,
+
+It is a true pleasure to confirm your upcoming reservation at Villa Toscana. Thank you for choosing to book directly with us; we sincerely appreciate the opportunity to curate your stay and ensure that every detail meets your expectations for a seamless, luxury experience.
+
+We have successfully secured your dates as follows:
+
+Check-in: August 12, 2026
+Check-out: August 16, 2026
+
+We are already preparing for your arrival to ensure everything is perfect for your stay. Please rest assured that our team will reach out to you a few days prior to your arrival date to provide comprehensive check-in instructions and our digital house manual, ensuring you have all the necessary information for a frictionless check-in process.
+
+Should you require any bespoke arrangements or personalized recommendations in the meantime, please do not hesitate to contact our concierge team. We are dedicated to making your time at Villa Toscana truly exceptional.
+
+Warmest regards,
+
+Senior Guest Experience Manager"
+RES-1007,Clark Kent,Villa Toscana,2026-08-16T04:00:00.000Z,2026-08-20T04:00:00.000Z,Airbnb,confirmed,Edge Case 2: Back-to-back turnover (Check-in Day),"Subject: Your Upcoming Stay at Villa Toscana – Confirmation Details
+
+Dear Clark Kent,
+
+It is a true pleasure to confirm your upcoming stay at Villa Toscana. We are delighted that you have chosen our property for your retreat, and we look forward to providing you with an exceptional experience.
+
+We have successfully processed your reservation made through Airbnb and can confirm your arrival and departure details as follows:
+
+**Check-in:** August 16, 2026
+**Check-out:** August 20, 2026
+
+At Villa Toscana, we pride ourselves on curating seamless and tranquil stays for our guests. Rest assured that your booking is fully secured and we are already beginning the preparations to ensure your time with us is nothing short of extraordinary.
+
+To ensure a frictionless arrival, we will send a comprehensive digital guide containing your personalized check-in instructions and our curated house manual a few days prior to your arrival date. 
+
+Should you require any assistance or wish to arrange bespoke concierge services in the interim, please do not hesitate to reach out. We are here to ensure every detail of your stay is perfectly tailored to your preferences.
+
+We look forward to welcoming you soon.
+
+Warmest regards,
+
+Management Team
+Luxury Property Collection"
+RES-1008,Oliver Twist,Villa Sol,2026-08-18T04:00:00.000Z,2026-08-25T04:00:00.000Z,Booking.com,cancelled,cancelled - no email sent,N/A
+RES-1009,Mia Wong,Villa Sol,2026-08-19T04:00:00.000Z,2026-08-24T04:00:00.000Z,Direct,confirmed,Edge Case 3: Valid active booking over cancelled dates,"Subject: Your upcoming stay at Villa Sol | A warm welcome
+
+Dear Mia Wong,
+
+It is a true pleasure to confirm your upcoming reservation at Villa Sol. We are delighted that you have chosen to book your stay directly with us, and we are already preparing to ensure your visit is nothing short of exceptional.
+
+We have successfully secured your dates and look forward to welcoming you to the property:
+
+**Check-in:** August 19, 2026
+**Check-out:** August 24, 2026
+
+At Villa Sol, our goal is to provide a seamless and restorative sanctuary for our guests. Rest assured that our team is currently attending to every detail to ensure the villa is pristine and ready for your arrival.
+
+To ensure your journey to us is effortless, we will send a comprehensive digital guide containing your personalized check-in instructions and the property’s house manual a few days prior to your arrival date. 
+
+In the meantime, should you have any special requests or require assistance with arrangements to enhance your stay, please do not hesitate to reach out. We are here to ensure that every aspect of your experience is tailored to your preferences.
+
+Thank you once again for choosing us for your luxury escape. We look forward to hosting you.
+
+Warmest regards,
+
+The Guest Experience Team
+Villa Sol Management"
+RES-1010,HVAC System Upgrade,Villa Serena,2026-08-01T04:00:00.000Z,2026-08-03T04:00:00.000Z,Internal,maintenance,maintenance - no email sent,N/A
+RES-1011,James Holden,Villa Aurora,2026-08-05T04:00:00.000Z,2026-08-10T04:00:00.000Z,Direct,confirmed,Sanity check: Same dates as RES-1004 but different villa — NO conflict,"Subject: Your upcoming stay at Villa Aurora
+
+Dear James Holden,
+
+It is a true pleasure to confirm your upcoming reservation with us. We are delighted that you have chosen to book directly through our website, and we look forward to providing you with an exceptional experience at Villa Aurora.
+
+Your stay has been formally secured for the following dates:
+
+Check-in: August 5, 2026
+Check-out: August 10, 2026
+
+We are currently preparing the villa to ensure that every detail meets our rigorous standards of comfort and elegance. Your stay is our highest priority, and our team is already anticipating your arrival.
+
+To ensure a seamless transition from your journey to our sanctuary, we will reach out a few days prior to your arrival date to share your personalized check-in instructions, along with our comprehensive digital house manual, which contains everything you need to know about your villa and the surrounding amenities.
+
+Should you require any assistance or personalized concierge services in the interim, please do not hesitate to reach out. We are here to ensure your time with us is nothing short of extraordinary.
+
+Warmest regards,
+
+Senior Guest Experience Management
+Luxury Property Management Team"
