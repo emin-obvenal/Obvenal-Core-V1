@@ -20,6 +20,18 @@ The workflow is built on a robust, asynchronous event-driven architecture to ens
   ### 🚨 V2 Architecture: Autonomous Technical Dispatch & Dynamic SLA Center
 
 In the V2 iteration, the Obvenal AI core transitions from a simple intent classifier into a fully autonomous operational dispatch center. The system now not only understands the guest's issue but actively calculates risk, delegates tasks to specific departments, and enforces strict Service Level Agreements (SLAs).
+  ## 📅 Calendar Sync & Conflict Detection
+
+Automated reservation management across multiple platforms:
+
+- Multi-villa conflict detection (same dates, different properties handled correctly)
+- Maintenance block filtering — internal blocks never trigger guest emails
+- Automated confirmation/rejection email generation via Gemini
+- Cancelled reservation ghost conflict resolution
+- Back-to-back turnover support (checkout day = check-in day)
+
+**Test Results:** 11/11 reservations processed correctly
+
 
 #### ⚙️ Enhanced Routing & Granular Triage
 *   **Deterministic JSON Parsing:** The AI's generative output is strictly constrained to a predefined JSON schema. This eliminates unstructured text parsing errors and ensures 100% data compatibility with downstream API nodes.
