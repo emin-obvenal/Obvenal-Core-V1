@@ -17,9 +17,10 @@ The workflow is built on a robust, asynchronous event-driven architecture to ens
 3. **Contextual Generation:** Distinct LLM branches process the categorized request using highly restrictive System Prompts to ensure tone consistency, precise name extraction, and localized language matching.
 4. **Audit Logging:** Every interaction is automatically logged into a centralized dashboard for Quality Assurance (QA) and performance tracking.
 
-  ### 🚨 V2 Architecture: Autonomous Technical Dispatch & Dynamic SLA Center
+## 🚨 V2 Architecture: Autonomous Technical Dispatch & Dynamic SLA Center
 
 In the V2 iteration, the Obvenal AI core transitions from a simple intent classifier into a fully autonomous operational dispatch center. The system now not only understands the guest's issue but actively calculates risk, delegates tasks to specific departments, and enforces strict Service Level Agreements (SLAs).
+
   ## 📅 Calendar Sync & Conflict Detection
 
 Automated reservation management across multiple platforms:
